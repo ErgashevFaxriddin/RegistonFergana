@@ -23,33 +23,8 @@
         <p class="label">💰 Oylik maosh:</p>
         <p class="salary">{{ job.min_salary }} - {{ job.max_salary }}</p>
 
-        <p class="label">📍 Joylashuv:</p>
-        <p>{{ job.location }}</p>
-
-        <p class="label">🕐 Ish turi:</p>
-        <p>{{ job.job_type }}</p>
-
-        <p class="label">📋 Tavsif:</p>
-        <p>{{ job.description }}</p>
-
-        <p class="label">✅ Talablar:</p>
-        <p>{{ job.requirements }}</p>
-
         <a href="{% url 'home_view' %}">← Orqaga</a>
     </div>
 
 </body>
 </html>
-```
-
----
-
-### Jarayon qanday ishlaydi:
-```
-index.html  →  job card'ga bosiladi
-     ↓
-/jobs/1/  URL ochiladi
-     ↓
-job_detail_view  ishga tushadi
-     ↓
-job_detail.html  to'liq ma'lumot ko'rsatadi

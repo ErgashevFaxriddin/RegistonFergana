@@ -58,13 +58,10 @@ class Employees(models.Model):
 
 
 class Jobs(models.Model):
-    title = models.CharField(max_length=200)
-    min_salary = models.FloatField()
-    max_salary = models.FloatField()
-    description = models.TextField()  # Ish tavsifi
-    requirements = models.TextField()  # Talablar
-    location = models.CharField(max_length=200)  # Joylashuv
-    job_type = models.CharField(max_length=100)  # Full-time / Part-time
+    job_id = models.AutoField(primary_key=True)
+    job_title = models.TextField()
+    min_salary = models.TextField()  # This field type is a guess.
+    max_salary = models.TextField()  # This field type is a guess.
 
     class Meta:
         managed = False
