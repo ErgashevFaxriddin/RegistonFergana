@@ -8,6 +8,8 @@ env/
 
 # Database
 db.sqlite3
+sample-database.db
+sample-database.sqlite3
 
 # IDE va editor
 .idea/

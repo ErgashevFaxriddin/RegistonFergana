@@ -3,6 +3,10 @@ from orm_app.models import Jobs
 
 
 def home_view(request):
+    return render(request, 'home.html')
+
+
+def jobs_list(request):
     all_jobs = Jobs.objects.all()
     context = {'jobs': all_jobs}
     return render(request, 'index.html', context)
