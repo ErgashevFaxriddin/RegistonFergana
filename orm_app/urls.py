@@ -1,9 +1,7 @@
 from django.urls import path
-
-from config.urls import urlpatterns
-from .views import index_page
-
+from .views import employees_list, home
 
 urlpatterns = [
-path('', index_page(), name='index_page')
+    path('', home, name='home'),
+    path('employees/', employees_list, name='employees_list'),  # tuzatildi
 ]
