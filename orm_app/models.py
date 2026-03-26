@@ -57,15 +57,60 @@ class Employees(models.Model):
         db_table = 'employees'
 
 
+# class Jobs(models.Model):
+#     job_id = models.AutoField(primary_key=True)
+#     job_title = models.TextField()
+#     min_salary = models.TextField()
+#     max_salary = models.TextField()
+#
+#     class Meta:
+#         managed = False
+#         db_table = 'jobs'
+
+from django.db import models
+
+
 class Jobs(models.Model):
     job_id = models.AutoField(primary_key=True)
-    job_title = models.TextField()
-    min_salary = models.TextField()  # This field type is a guess.
-    max_salary = models.TextField()  # This field type is a guess.
+
+    # Asosiy ma'lumotlar
+    job_title = models.CharField(max_length=255)
+    job_description = models.TextField()
+
+    # Kompaniya ma'lumotlari
+    company_name = models.CharField(max_length=255)
+    company_location = models.CharField(max_length=255)
+
+    # Ish turi
+    JOB_TYPE_CHOICES = [
+        ('full_time', 'Full Time'),
+        ('part_time', 'Part Time'),
+        ('remote', 'Remote'),
+        ('internship', 'Internship'),
+    ]
+    job_type = models.CharField(max_length=20, choices=JOB_TYPE_CHOICES)
+
+    # Maosh
+    min_salary = models.IntegerField()
+    max_salary = models.IntegerField()
+    currency = models.CharField(max_length=10, default='USD')
+
+    # Talablar
+    requirements = models.TextField()
+    experience_level = models.CharField(max_length=100)  # Junior, Mid, Senior
+
+    # Sana va holat
+    posted_at = models.DateTimeField(auto_now_add=True)
+    deadline = models.DateField(null=True, blank=True)
+    is_active = models.BooleanField(default=True)
+
+    # Qo‘shimcha
+    contact_email = models.EmailField()
+    website = models.URLField(null=True, blank=True)
 
     class Meta:
-        managed = False
         db_table = 'jobs'
+        ordering = ['-posted_at']
 
 
 class Locations(models.Model):
