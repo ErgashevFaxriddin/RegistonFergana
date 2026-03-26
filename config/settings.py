@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'students',
     'main_app',
     'teachers',
+    'ormapp',
 ]
 
 MIDDLEWARE = [
