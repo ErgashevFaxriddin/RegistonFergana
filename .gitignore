@@ -10,6 +10,7 @@ env/
 db.sqlite3
 sample-database.db
 sample-database.sqlite3
+sample-database
 
 # IDE va editor
 .idea/
