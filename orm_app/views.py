@@ -9,3 +9,7 @@ def employees_list(request):
 
 def home(request):
     return render(request, 'home.html')
+
+
+def apply(request):
+    return render(request, 'apply.html')
