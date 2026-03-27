@@ -88,3 +88,13 @@ class Regions(models.Model):
     class Meta:
         managed = False
         db_table = 'regions'
+
+
+class Application(models.Model):
+    name = models.CharField(max_length=100)
+    email = models.EmailField()
+    phone = models.CharField(max_length=20, blank=True, null=True)
+    job = models.ForeignKey(Jobs, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return self.name
