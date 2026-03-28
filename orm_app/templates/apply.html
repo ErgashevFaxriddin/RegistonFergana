@@ -25,7 +25,6 @@
 
     <div class="w-full max-w-lg">
 
-        <!-- Card -->
         <div class="glass border border-gray-200 rounded-2xl shadow-xl p-8 transition hover:shadow-2xl">
 
             <!-- Header -->
@@ -34,24 +33,44 @@
                 <p class="text-sm text-gray-500 mt-1">Formani to‘ldiring va yuboring</p>
             </div>
 
-            <!-- Form -->
+            <!-- FORM -->
             <form method="post" class="space-y-5">
                 {% csrf_token %}
 
                 <!-- Name -->
                 <div>
                     <label class="block text-sm font-medium text-gray-700 mb-1">Ism</label>
-                    <input type="text" name="name"
-                        class="w-full px-4 py-3 rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-blue-400 transition shadow-sm hover:shadow-md"
-                        placeholder="Ismingizni kiriting">
+                    {{ form.name }}
+                    {% if form.name.errors %}
+                        <p class="text-red-500 text-sm mt-1">{{ form.name.errors.0 }}</p>
+                    {% endif %}
                 </div>
 
                 <!-- Email -->
                 <div>
                     <label class="block text-sm font-medium text-gray-700 mb-1">Email</label>
-                    <input type="email" name="email"
-                        class="w-full px-4 py-3 rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-blue-400 transition shadow-sm hover:shadow-md"
-                        placeholder="example@gmail.com">
+                    {{ form.email }}
+                    {% if form.email.errors %}
+                        <p class="text-red-500 text-sm mt-1">{{ form.email.errors.0 }}</p>
+                    {% endif %}
+                </div>
+
+                <!-- Phone -->
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-1">Telefon</label>
+                    {{ form.phone }}
+                    {% if form.phone.errors %}
+                        <p class="text-red-500 text-sm mt-1">{{ form.phone.errors.0 }}</p>
+                    {% endif %}
+                </div>
+
+                <!-- Job -->
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-1">Vakansiya</label>
+                    {{ form.job }}
+                    {% if form.job.errors %}
+                        <p class="text-red-500 text-sm mt-1">{{ form.job.errors.0 }}</p>
+                    {% endif %}
                 </div>
 
                 <!-- Submit -->
@@ -63,7 +82,7 @@
                 </div>
             </form>
 
-            <!-- Back link -->
+            <!-- Back -->
             <div class="mt-6 text-center">
                 <a href="{% url 'home' %}"
                     class="text-sm text-blue-600 hover:text-blue-800 transition font-medium inline-flex items-center gap-1">
@@ -73,7 +92,6 @@
 
         </div>
 
-        <!-- Footer -->
         <p class="text-center text-xs text-gray-400 mt-6">
             © 2026 CRM System
         </p>
