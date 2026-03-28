@@ -23,80 +23,97 @@
 
 <body class="bg-gradient-to-br from-blue-50 via-gray-50 to-indigo-100 min-h-screen flex items-center justify-center p-6">
 
-    <div class="w-full max-w-lg">
+<div class="w-full max-w-lg">
 
-        <div class="glass border border-gray-200 rounded-2xl shadow-xl p-8 transition hover:shadow-2xl">
+    <div class="glass border border-gray-200 rounded-2xl shadow-xl p-8">
 
-            <!-- Header -->
-            <div class="mb-6 text-center">
-                <h1 class="text-2xl font-bold text-gray-800">Ishga Ariza Berish</h1>
-                <p class="text-sm text-gray-500 mt-1">Formani to‘ldiring va yuboring</p>
-            </div>
-
-            <!-- FORM -->
-            <form method="post" class="space-y-5">
-                {% csrf_token %}
-
-                <!-- Name -->
-                <div>
-                    <label class="block text-sm font-medium text-gray-700 mb-1">Ism</label>
-                    {{ form.name }}
-                    {% if form.name.errors %}
-                        <p class="text-red-500 text-sm mt-1">{{ form.name.errors.0 }}</p>
-                    {% endif %}
-                </div>
-
-                <!-- Email -->
-                <div>
-                    <label class="block text-sm font-medium text-gray-700 mb-1">Email</label>
-                    {{ form.email }}
-                    {% if form.email.errors %}
-                        <p class="text-red-500 text-sm mt-1">{{ form.email.errors.0 }}</p>
-                    {% endif %}
-                </div>
-
-                <!-- Phone -->
-                <div>
-                    <label class="block text-sm font-medium text-gray-700 mb-1">Telefon</label>
-                    {{ form.phone }}
-                    {% if form.phone.errors %}
-                        <p class="text-red-500 text-sm mt-1">{{ form.phone.errors.0 }}</p>
-                    {% endif %}
-                </div>
-
-                <!-- Job -->
-                <div>
-                    <label class="block text-sm font-medium text-gray-700 mb-1">Vakansiya</label>
-                    {{ form.job }}
-                    {% if form.job.errors %}
-                        <p class="text-red-500 text-sm mt-1">{{ form.job.errors.0 }}</p>
-                    {% endif %}
-                </div>
-
-                <!-- Submit -->
-                <div class="pt-2">
-                    <button type="submit"
-                        class="w-full py-3 px-4 rounded-xl text-white font-semibold bg-gradient-to-r from-blue-500 to-indigo-600 hover:from-indigo-600 hover:to-blue-500 transition transform hover:scale-[1.02] active:scale-[0.98] shadow-md hover:shadow-lg">
-                        Yuborish
-                    </button>
-                </div>
-            </form>
-
-            <!-- Back -->
-            <div class="mt-6 text-center">
-                <a href="{% url 'home' %}"
-                    class="text-sm text-blue-600 hover:text-blue-800 transition font-medium inline-flex items-center gap-1">
-                    ← Bosh sahifaga qaytish
-                </a>
-            </div>
-
+        <!-- HEADER -->
+        <div class="mb-6 text-center">
+            <h1 class="text-2xl font-bold text-gray-800">Ishga Ariza</h1>
+            <p class="text-sm text-gray-500">Ma’lumotlarni kiriting</p>
         </div>
 
-        <p class="text-center text-xs text-gray-400 mt-6">
-            © 2026 CRM System
-        </p>
+        <!-- FORM -->
+        <form method="post" novalidate class="space-y-5">
+            {% csrf_token %}
+
+            <!-- NON FIELD ERRORS -->
+            {% if form.non_field_errors %}
+                <div class="bg-red-100 text-red-600 p-3 rounded-lg">
+                    {{ form.non_field_errors }}
+                </div>
+            {% endif %}
+
+            <!-- NAME -->
+            <div>
+                <label class="block text-sm font-medium text-gray-700 mb-1">
+                    Ism
+                </label>
+                {{ form.name }}
+                {% if form.name.errors %}
+                    <p class="text-red-500 text-sm mt-1">
+                        {{ form.name.errors.0 }}
+                    </p>
+                {% endif %}
+            </div>
+
+            <!-- EMAIL -->
+            <div>
+                <label class="block text-sm font-medium text-gray-700 mb-1">
+                    Email
+                </label>
+                {{ form.email }}
+                {% if form.email.errors %}
+                    <p class="text-red-500 text-sm mt-1">
+                        {{ form.email.errors.0 }}
+                    </p>
+                {% endif %}
+            </div>
+
+            <!-- PHONE -->
+            <div>
+                <label class="block text-sm font-medium text-gray-700 mb-1">
+                    Telefon
+                </label>
+                {{ form.phone }}
+                {% if form.phone.errors %}
+                    <p class="text-red-500 text-sm mt-1">
+                        {{ form.phone.errors.0 }}
+                    </p>
+                {% endif %}
+            </div>
+
+            <!-- JOB -->
+            <div>
+                <label class="block text-sm font-medium text-gray-700 mb-1">
+                    Vakansiya
+                </label>
+                {{ form.job }}
+                {% if form.job.errors %}
+                    <p class="text-red-500 text-sm mt-1">
+                        {{ form.job.errors.0 }}
+                    </p>
+                {% endif %}
+            </div>
+
+            <!-- SUBMIT -->
+            <button type="submit"
+                class="w-full py-3 rounded-xl text-white font-semibold bg-gradient-to-r from-blue-500 to-indigo-600 hover:scale-105 transition">
+                Yuborish
+            </button>
+
+        </form>
+
+        <!-- BACK -->
+        <div class="mt-5 text-center">
+            <a href="{% url 'home' %}" class="text-blue-600 hover:underline text-sm">
+                ← Ortga qaytish
+            </a>
+        </div>
 
     </div>
+
+</div>
 
 </body>
 </html>
