@@ -31,3 +31,9 @@ class ApplicationForm(forms.ModelForm):
         if Application.objects.filter(email=email).exists():
             raise forms.ValidationError("Bu email allaqachon ishlatilgan!")
         return email
+
+    def clean_phone(self):
+        phone = self.cleaned_data.get('email')
+        if Application.objects.filter(phone=phone).exists():
+            raise forms.ValidationError("Bu raqam allaqachon ishlatilgan!")
+        return phone
