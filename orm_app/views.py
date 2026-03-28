@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from .models import Jobs, Employees
+from .forms import ApplicationForm  # import the form
 
 
 def employees_list(request):
@@ -12,4 +13,15 @@ def home(request):
 
 
 def apply(request):
-    return render(request, 'apply.html')
+    success = False
+
+    if request.method == 'POST':
+        form = ApplicationForm(request.POST)
+        if form.is_valid():
+            form.save()          # saves to database
+            success = True
+            form = ApplicationForm()  # reset form after success
+    else:
+        form = ApplicationForm()  # empty form for GET request
+
+    return render(request, 'apply.html', {'form': form, 'success': success})
