@@ -3,114 +3,94 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ishga Ariza | CRM</title>
+    <title>Ishga Ariza</title>
 
     <script src="https://cdn.tailwindcss.com"></script>
 
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-
     <style>
         body {
-            font-family: 'Inter', sans-serif;
-        }
-
-        .glass {
-            backdrop-filter: blur(10px);
-            background: rgba(255, 255, 255, 0.7);
+            font-family: sans-serif;
         }
     </style>
 </head>
 
-<body class="bg-gradient-to-br from-blue-50 via-gray-50 to-indigo-100 min-h-screen flex items-center justify-center p-6">
+<body class="bg-gradient-to-br from-blue-50 via-white to-indigo-100 min-h-screen flex items-center justify-center">
 
-<div class="w-full max-w-lg">
+<div class="w-full max-w-lg bg-white shadow-2xl rounded-2xl p-8">
 
-    <div class="glass border border-gray-200 rounded-2xl shadow-xl p-8">
+    <!-- HEADER -->
+    <div class="text-center mb-6">
+        <h1 class="text-3xl font-bold text-gray-800">Ishga Ariza</h1>
+        <p class="text-gray-500 text-sm">Ma’lumotlaringizni kiriting</p>
+    </div>
 
-        <!-- HEADER -->
-        <div class="mb-6 text-center">
-            <h1 class="text-2xl font-bold text-gray-800">Ishga Ariza</h1>
-            <p class="text-sm text-gray-500">Ma’lumotlarni kiriting</p>
+    <!-- SUCCESS MESSAGE -->
+    {% if success %}
+        <div class="bg-green-100 text-green-700 p-3 rounded-lg mb-4 text-center">
+            ✅ Ariza muvaffaqiyatli yuborildi!
         </div>
+    {% endif %}
 
-        <!-- FORM -->
-        <form method="post" novalidate class="space-y-5">
-            {% csrf_token %}
+    <!-- FORM -->
+    <form method="post" class="space-y-5">
+        {% csrf_token %}
 
-            <!-- NON FIELD ERRORS -->
-            {% if form.non_field_errors %}
-                <div class="bg-red-100 text-red-600 p-3 rounded-lg">
-                    {{ form.non_field_errors }}
-                </div>
+        <!-- GLOBAL ERRORS -->
+        {% if form.non_field_errors %}
+            <div class="bg-red-100 text-red-600 p-3 rounded-lg">
+                {{ form.non_field_errors }}
+            </div>
+        {% endif %}
+
+        <!-- NAME -->
+        <div>
+            <label class="block text-sm font-medium mb-1">Ism</label>
+            {{ form.name }}
+            {% if form.name.errors %}
+                <p class="text-red-500 text-sm mt-1">{{ form.name.errors.0 }}</p>
             {% endif %}
-
-            <!-- NAME -->
-            <div>
-                <label class="block text-sm font-medium text-gray-700 mb-1">
-                    Ism
-                </label>
-                {{ form.name }}
-                {% if form.name.errors %}
-                    <p class="text-red-500 text-sm mt-1">
-                        {{ form.name.errors.0 }}
-                    </p>
-                {% endif %}
-            </div>
-
-            <!-- EMAIL -->
-            <div>
-                <label class="block text-sm font-medium text-gray-700 mb-1">
-                    Email
-                </label>
-                {{ form.email }}
-                {% if form.email.errors %}
-                    <p class="text-red-500 text-sm mt-1">
-                        {{ form.email.errors.0 }}
-                    </p>
-                {% endif %}
-            </div>
-
-            <!-- PHONE -->
-            <div>
-                <label class="block text-sm font-medium text-gray-700 mb-1">
-                    Telefon
-                </label>
-                {{ form.phone }}
-                {% if form.phone.errors %}
-                    <p class="text-red-500 text-sm mt-1">
-                        {{ form.phone.errors.0 }}
-                    </p>
-                {% endif %}
-            </div>
-
-            <!-- JOB -->
-            <div>
-                <label class="block text-sm font-medium text-gray-700 mb-1">
-                    Vakansiya
-                </label>
-                {{ form.job }}
-                {% if form.job.errors %}
-                    <p class="text-red-500 text-sm mt-1">
-                        {{ form.job.errors.0 }}
-                    </p>
-                {% endif %}
-            </div>
-
-            <!-- SUBMIT -->
-            <button type="submit"
-                class="w-full py-3 rounded-xl text-white font-semibold bg-gradient-to-r from-blue-500 to-indigo-600 hover:scale-105 transition">
-                Yuborish
-            </button>
-
-        </form>
-
-        <!-- BACK -->
-        <div class="mt-5 text-center">
-            <a href="{% url 'home' %}" class="text-blue-600 hover:underline text-sm">
-                ← Ortga qaytish
-            </a>
         </div>
 
+        <!-- EMAIL -->
+        <div>
+            <label class="block text-sm font-medium mb-1">Email</label>
+            {{ form.email }}
+            {% if form.email.errors %}
+                <p class="text-red-500 text-sm mt-1">{{ form.email.errors.0 }}</p>
+            {% endif %}
+        </div>
+
+        <!-- PHONE -->
+        <div>
+            <label class="block text-sm font-medium mb-1">Telefon</label>
+            {{ form.phone }}
+            {% if form.phone.errors %}
+                <p class="text-red-500 text-sm mt-1">{{ form.phone.errors.0 }}</p>
+            {% endif %}
+        </div>
+
+        <!-- JOB -->
+        <div>
+            <label class="block text-sm font-medium mb-1">Vakansiya</label>
+            {{ form.job }}
+            {% if form.job.errors %}
+                <p class="text-red-500 text-sm mt-1">{{ form.job.errors.0 }}</p>
+            {% endif %}
+        </div>
+
+        <!-- SUBMIT -->
+        <button type="submit"
+            class="w-full py-3 bg-gradient-to-r from-blue-500 to-indigo-600 text-white font-semibold rounded-xl hover:scale-105 transition">
+            Yuborish
+        </button>
+
+    </form>
+
+    <!-- BACK -->
+    <div class="text-center mt-5">
+        <a href="{% url 'home' %}" class="text-blue-600 text-sm hover:underline">
+            ← Ortga qaytish
+        </a>
     </div>
 
 </div>
