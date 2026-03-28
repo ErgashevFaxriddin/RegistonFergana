@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from .models import Jobs, Employees
-from .forms import ApplicationForm  # import the form
+from .forms import ApplicationForm
 
 
 def employees_list(request):
