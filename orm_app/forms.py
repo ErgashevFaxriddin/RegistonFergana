@@ -33,7 +33,7 @@ class ApplicationForm(forms.ModelForm):
         return email
 
     def clean_phone(self):
-        phone = self.cleaned_data.get('email')
+        phone = self.cleaned_data.get('phone')
         if Application.objects.filter(phone=phone).exists():
             raise forms.ValidationError("Bu raqam allaqachon ishlatilgan!")
         return phone
