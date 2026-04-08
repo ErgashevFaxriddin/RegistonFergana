@@ -1,26 +1,14 @@
 from django import forms
-from .models import Application
+from .models import Application, Customer
 
 
 class ApplicationForm(forms.ModelForm):
     class Meta:
         model = Application
-        fields = ['name', 'email', 'phone', 'job']
+        fields = "__all__"
 
-        widgets = {
-            'name': forms.TextInput(attrs={
-                'class': 'w-full p-2 border rounded',
-                'placeholder': 'Ismingiz'
-            }),
-            'email': forms.EmailInput(attrs={
-                'class': 'w-full p-2 border rounded',
-                'placeholder': 'Email'
-            }),
-            'phone': forms.TextInput(attrs={
-                'class': 'w-full p-2 border rounded',
-                'placeholder': 'Telefon raqam'
-            }),
-            'job': forms.Select(attrs={
-                'class': 'w-full p-2 border rounded'
-            }),
-        }
+
+class CustomerForm(forms.ModelForm):
+    class Meta:
+        model = Customer
+        fields = "__all__"

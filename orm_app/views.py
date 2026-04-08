@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from .models import Employees, Customer
-from .forms import ApplicationForm
+from .forms import ApplicationForm, CustomerForm
 
 
 def home(request):
@@ -28,4 +28,17 @@ def apply(request):
     })
 
 def customer_form(request):
-    form = Customer
+    form = CustomerForm(request.POST)
+    if request.POST and form.is_valid():
+        return redirect("customers-list")
+    ctx = {
+        "form": form
+    }
+    return render(request, "form.html", ctx)
+
+def customers_list(request):
+    customers = Customer.objects.all()
+    ctx = {
+        'customers': customers
+    }
+    return render(request, 'table.html', ctx)

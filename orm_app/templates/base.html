@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}CRM{% endblock %}</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-50">
+
+<!-- NAVBAR -->
+<nav class="bg-white shadow-md mb-6">
+    <div class="max-w-6xl mx-auto px-4 py-3 flex justify-between items-center">
+        <div class="text-xl font-bold text-gray-800">
+            CRM System
+        </div>
+
+        <div class="space-x-4">
+            <a href="{% url 'home' %}" class="text-gray-600 hover:text-blue-600">Home</a>
+            <a href="{% url 'employees' %}" class="text-gray-600 hover:text-blue-600">Employees</a>
+            <a href="{% url 'customers_list' %}" class="text-gray-600 hover:text-blue-600">Customers</a>
+            <a href="{% url 'customer-form' %}" class="text-gray-600 hover:text-blue-600">Add Customer</a>
+            <a href="{% url 'apply' %}" class="text-gray-600 hover:text-blue-600">Apply</a>
+        </div>
+    </div>
+</nav>
+
+<!-- CONTENT -->
+<div class="px-4">
+    {% block content %}{% endblock %}
+</div>
+
+</body>
+</html>

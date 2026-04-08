@@ -8,16 +8,24 @@
 
 <body class="flex items-center justify-center min-h-screen bg-gray-900 text-white">
 
-<div class="bg-white/10 p-10 rounded-2xl text-center space-y-4">
+<div class="bg-white/10 p-10 rounded-2xl text-center space-y-4 w-80">
 
-    <h1 class="text-3xl font-bold">CRM Dashboard</h1>
+    <h1 class="text-3xl font-bold mb-6">CRM Dashboard</h1>
 
-    <a href="{% url 'employees' %}" class="block bg-blue-600 p-3 rounded-xl">
-        Xodimlar ro'yxati
+    <a href="{% url 'employees' %}" class="block bg-blue-600 p-3 rounded-xl hover:bg-blue-700 transition">
+        👥 Xodimlar ro'yxati
     </a>
 
-    <a href="{% url 'apply' %}" class="block bg-gray-700 p-3 rounded-xl">
-        Ishga ariza
+    <a href="{% url 'apply' %}" class="block bg-green-600 p-3 rounded-xl hover:bg-green-700 transition">
+        📝 Ishga ariza
+    </a>
+
+    <a href="{% url 'customer-form' %}" class="block bg-yellow-500 p-3 rounded-xl hover:bg-yellow-600 transition text-black">
+        ➕ Customer qo‘shish
+    </a>
+
+    <a href="{% url 'customers-list' %}" class="block bg-purple-600 p-3 rounded-xl hover:bg-purple-700 transition">
+        📋 Customerlar ro'yxati
     </a>
 
 </div>
