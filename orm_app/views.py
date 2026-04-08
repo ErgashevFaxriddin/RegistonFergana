@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from .models import Employees
+from .models import Employees, Customer
 from .forms import ApplicationForm
 
 
@@ -26,3 +26,6 @@ def apply(request):
     return render(request, 'apply.html', {
         'form': form
     })
+
+def customer_form(request):
+    form = Customer
