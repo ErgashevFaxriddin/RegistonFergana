@@ -1,27 +1,28 @@
-from django.shortcuts import render
-from .models import Jobs, Employees
+from django.shortcuts import render, redirect
+from .models import Employees
 from .forms import ApplicationForm
-
-
-def employees_list(request):
-    employees = Employees.objects.select_related('department', 'job').all()
-    return render(request, 'employees_list.html', {'employees': employees})
 
 
 def home(request):
     return render(request, 'home.html')
 
 
-def apply(request):
-    success = False
+def employees_list(request):
+    employees = Employees.objects.select_related('department', 'job').all()
+    return render(request, 'employees_list.html', {
+        'employees': employees
+    })
 
+
+def apply(request):
     if request.method == 'POST':
         form = ApplicationForm(request.POST)
         if form.is_valid():
-            form.save()          # saves to database
-            success = True
-            form = ApplicationForm()  # reset form after success
+            form.save()
+            return redirect('home')
     else:
-        form = ApplicationForm()  # empty form for GET request
+        form = ApplicationForm()
 
-    return render(request, 'apply.html', {'form': form, 'success': success})
+    return render(request, 'apply.html', {
+        'form': form
+    })

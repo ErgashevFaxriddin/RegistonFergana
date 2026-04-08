@@ -1,222 +1,26 @@
-<!--<!DOCTYPE html>-->
-<!--<html lang="uz">-->
-<!--<head>-->
-<!--    <meta charset="UTF-8">-->
-<!--    <meta name="viewport" content="width=device-width, initial-scale=1.0">-->
-<!--    <title>CRM Home</title>-->
-
-<!--    &lt;!&ndash; Tailwind CSS (optional via CDN) &ndash;&gt;-->
-<!--    <script src="https://cdn.tailwindcss.com"></script>-->
-<!--</head>-->
-
-<!--<body class="bg-gray-100 flex items-center justify-center min-h-screen">-->
-
-<!--    <div class="bg-white p-10 rounded-2xl shadow-lg w-full max-w-md text-center">-->
-
-<!--        &lt;!&ndash; Title &ndash;&gt;-->
-<!--        <h1 class="text-3xl font-bold text-gray-800 mb-2">-->
-<!--            Xush kelibsiz!-->
-<!--        </h1>-->
-
-<!--        <p class="text-gray-500 mb-8">-->
-<!--            CRM tizimiga xush kelibsiz. Quyidagi tugmalar orqali tizimdan foydalaning.-->
-<!--        </p>-->
-
-<!--        &lt;!&ndash; Employees button &ndash;&gt;-->
-<!--        <a href="{% url 'employees' %}"-->
-<!--           class="inline-block w-full py-3 px-6 text-white bg-blue-600 hover:bg-blue-700 font-semibold rounded-xl transition duration-300 transform hover:-translate-y-1 shadow-md">-->
-<!--            Xodimlar ro'yxati-->
-<!--        </a>-->
-
-<!--        &lt;!&ndash; Apply button &ndash;&gt;-->
-<!--        <a href="{% url 'apply' %}"-->
-<!--           class="inline-block w-full mt-4 py-3 px-6 text-white bg-green-600 hover:bg-green-700 font-semibold rounded-xl transition duration-300 transform hover:-translate-y-1 shadow-md">-->
-<!--            Ishga ariza berish-->
-<!--        </a>-->
-
-<!--    </div>-->
-
-<!--</body>-->
-<!--</html>-->
-
-
-
 <!DOCTYPE html>
 <html lang="uz">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Modern CRM Dashboard | Welcome</title>
-
-    <!-- Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com"></script>
-
-    <!-- Google Fonts: Inter -->
-    <link href="https://fonts.googleapis.com" rel="stylesheet">
-
-    <!-- Lucide Icons -->
-    <script src="https://unpkg.com"></script>
-
-    <style>
-        body {
-            font-family: 'Inter', sans-serif;
-            background: radial-gradient(circle at top left, #1e293b, #0f172a);
-            overflow: hidden;
-        }
-
-        /* Animated Background Blobs */
-        .blob {
-            position: absolute;
-            width: 500px;
-            height: 500px;
-            background: linear-gradient(135deg, rgba(59, 130, 246, 0.2), rgba(147, 51, 234, 0.2));
-            filter: blur(80px);
-            border-radius: 50%;
-            z-index: -1;
-            animation: move 25s infinite alternate;
-        }
-
-        @keyframes move {
-            from { transform: translate(-10%, -10%); }
-            to { transform: translate(20%, 20%); }
-        }
-
-        /* Glassmorphism Effect */
-        .glass-card {
-            background: rgba(255, 255, 255, 0.03);
-            backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
-        }
-
-        .btn-primary {
-            background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
-        .btn-secondary {
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
-        .btn-secondary:hover {
-            background: rgba(255, 255, 255, 0.1);
-            border-color: rgba(255, 255, 255, 0.3);
-        }
-
-        /* Loading Shimmer Effect */
-        .shimmer {
-            position: relative;
-            overflow: hidden;
-        }
-
-        .shimmer::after {
-            content: "";
-            position: absolute;
-            top: 0; right: 0; bottom: 0; left: 0;
-            transform: translateX(-100%);
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.05), transparent);
-            animation: shimmer 3s infinite;
-        }
-
-        @keyframes shimmer {
-            100% { transform: translateX(100%); }
-        }
-    </style>
+<meta charset="UTF-8">
+<title>CRM Dashboard</title>
+<script src="https://cdn.tailwindcss.com"></script>
 </head>
 
-<body class="text-slate-200 flex items-center justify-center min-h-screen p-6">
+<body class="flex items-center justify-center min-h-screen bg-gray-900 text-white">
 
-    <!-- Decorative Elements -->
-    <div class="blob" style="top: -100px; left: -100px;"></div>
-    <div class="blob" style="bottom: -100px; right: -100px; animation-delay: -5s;"></div>
+<div class="bg-white/10 p-10 rounded-2xl text-center space-y-4">
 
-    <!-- Main Container -->
-    <main class="glass-card w-full max-w-[440px] rounded-[2.5rem] p-8 md:p-12 relative overflow-hidden">
+    <h1 class="text-3xl font-bold">CRM Dashboard</h1>
 
-        <!-- Header Section -->
-        <header class="text-center mb-10">
-            <div class="inline-flex items-center justify-center w-20 h-20 mb-6 rounded-2xl bg-blue-600/20 border border-blue-500/30 text-blue-400 shadow-inner">
-                <i data-lucide="layout-dashboard" class="w-10 h-10"></i>
-            </div>
+    <a href="{% url 'employees' %}" class="block bg-blue-600 p-3 rounded-xl">
+        Xodimlar ro'yxati
+    </a>
 
-            <h1 class="text-4xl font-extrabold tracking-tight text-white mb-3">
-                Xush kelibsiz<span class="text-blue-500">.</span>
-            </h1>
+    <a href="{% url 'apply' %}" class="block bg-gray-700 p-3 rounded-xl">
+        Ishga ariza
+    </a>
 
-            <p class="text-slate-400 leading-relaxed text-sm font-medium px-4">
-                CRM boshqaruv tizimining intellektual paneliga xush kelibsiz. Ishni davom ettirish uchun bo'limni tanlang.
-            </p>
-        </header>
-
-        <!-- Navigation Actions -->
-        <nav class="space-y-4">
-
-            <!-- Employee List Action -->
-            <a href="{% url 'employees' %}"
-               class="btn-primary group flex items-center justify-between w-full p-4 rounded-2xl shadow-xl shadow-blue-900/20 hover:scale-[1.02] active:scale-[0.98]">
-                <div class="flex items-center gap-4">
-                    <div class="bg-white/10 p-2 rounded-lg group-hover:scale-110 transition-transform">
-                        <i data-lucide="users" class="w-5 h-5 text-white"></i>
-                    </div>
-                    <div class="text-left">
-                        <span class="block text-white font-bold text-sm">Xodimlar ro'yxati</span>
-                        <span class="block text-blue-100/60 text-[11px]">Barcha xodimlarni boshqarish</span>
-                    </div>
-                </div>
-                <i data-lucide="chevron-right" class="w-5 h-5 text-white/50 group-hover:translate-x-1 transition-transform"></i>
-            </a>
-
-            <!-- Application Action -->
-            <a href="{% url 'apply' %}"
-               class="btn-secondary group flex items-center justify-between w-full p-4 rounded-2xl hover:scale-[1.02] active:scale-[0.98]">
-                <div class="flex items-center gap-4">
-                    <div class="bg-blue-500/10 p-2 rounded-lg text-blue-400 group-hover:bg-blue-500/20 transition-colors">
-                        <i data-lucide="file-plus-2" class="w-5 h-5"></i>
-                    </div>
-                    <div class="text-left">
-                        <span class="block text-white font-bold text-sm">Ishga ariza berish</span>
-                        <span class="block text-slate-500 text-[11px]">Yangi vakansiyalar uchun ariza</span>
-                    </div>
-                </div>
-                <i data-lucide="arrow-up-right" class="w-5 h-5 text-slate-600 group-hover:text-white transition-colors"></i>
-            </a>
-
-        </nav>
-
-        <!-- Footer / Status -->
-        <footer class="mt-12 pt-8 border-t border-white/5">
-            <div class="flex items-center justify-between px-2">
-                <div class="flex items-center gap-2">
-                    <span class="flex h-2 w-2 rounded-full bg-emerald-500 animate-pulse"></span>
-                    <span class="text-[10px] uppercase tracking-widest font-bold text-slate-500">Tizim holati: Faol</span>
-                </div>
-                <div class="text-[10px] text-slate-600 font-medium">
-                    v2.4.0 Build
-                </div>
-            </div>
-        </footer>
-
-    </main>
-
-    <!-- Bottom Decorative Text -->
-    <div class="absolute bottom-6 left-1/2 -translate-x-1/2 opacity-20 text-[10px] uppercase tracking-[0.3em] font-light hidden md:block">
-        &copy; 2024 CRM Ecosystems. All Rights Reserved.
-    </div>
-
-    <!-- Script to Initialize Icons -->
-    <script>
-        lucide.createIcons();
-
-        // Button Click Sound Effect (Optional UX)
-        document.querySelectorAll('a').forEach(button => {
-            button.addEventListener('mousedown', () => {
-                // Haptic feedback simulation or sound could be added here
-            });
-        });
-    </script>
+</div>
 
 </body>
 </html>

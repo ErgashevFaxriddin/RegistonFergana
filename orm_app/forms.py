@@ -1,5 +1,5 @@
 from django import forms
-from .models import Application, Jobs
+from .models import Application
 
 
 class ApplicationForm(forms.ModelForm):
@@ -24,16 +24,3 @@ class ApplicationForm(forms.ModelForm):
                 'class': 'w-full p-2 border rounded'
             }),
         }
-
-    # ixtiyoriy validatsiya (xohlasang)
-    def clean_email(self):
-        email = self.cleaned_data.get('email')
-        if Application.objects.filter(email=email).exists():
-            raise forms.ValidationError("Bu email allaqachon ishlatilgan!")
-        return email
-
-    def clean_phone(self):
-        phone = self.cleaned_data.get('phone')
-        if Application.objects.filter(phone=phone).exists():
-            raise forms.ValidationError("Bu raqam allaqachon ishlatilgan!")
-        return phone
