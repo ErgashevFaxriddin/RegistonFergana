@@ -3,41 +3,71 @@
 {% block title %}Apply{% endblock %}
 
 {% block content %}
-<div class="flex justify-center items-center min-h-[70vh]">
 
-    <div class="w-full max-w-lg bg-white shadow-xl rounded-2xl p-8">
+<div class="flex items-center justify-center min-h-[70vh] px-4">
 
-        <h1 class="text-2xl font-bold mb-6 text-center">Ishga Ariza</h1>
+    <div class="w-full max-w-xl bg-white rounded-2xl shadow-lg p-8">
 
+        <!-- Header -->
+        <div class="text-center mb-8">
+            <h1 class="text-3xl font-semibold text-gray-800">Job Application</h1>
+            <p class="text-gray-500 mt-2">Fill in your details to apply</p>
+        </div>
+
+        <!-- Form -->
         <form method="post" class="space-y-5">
             {% csrf_token %}
 
+            <!-- Name -->
             <div>
-                <label>Ism</label>
-                {{ form.name }}
+                <label class="block text-sm font-medium text-gray-700 mb-1">
+                    Full Name
+                </label>
+                <div class="border rounded-lg px-3 py-2 focus-within:ring-2 focus-within:ring-blue-500">
+                    {{ form.name }}
+                </div>
             </div>
 
+            <!-- Email -->
             <div>
-                <label>Email</label>
-                {{ form.email }}
+                <label class="block text-sm font-medium text-gray-700 mb-1">
+                    Email Address
+                </label>
+                <div class="border rounded-lg px-3 py-2 focus-within:ring-2 focus-within:ring-blue-500">
+                    {{ form.email }}
+                </div>
             </div>
 
+            <!-- Phone -->
             <div>
-                <label>Telefon</label>
-                {{ form.phone }}
+                <label class="block text-sm font-medium text-gray-700 mb-1">
+                    Phone Number
+                </label>
+                <div class="border rounded-lg px-3 py-2 focus-within:ring-2 focus-within:ring-blue-500">
+                    {{ form.phone }}
+                </div>
             </div>
 
+            <!-- Job -->
             <div>
-                <label>Vakansiya</label>
-                {{ form.job }}
+                <label class="block text-sm font-medium text-gray-700 mb-1">
+                    Select Job
+                </label>
+                <div class="border rounded-lg px-3 py-2 focus-within:ring-2 focus-within:ring-blue-500">
+                    {{ form.job }}
+                </div>
             </div>
 
-            <button type="submit" class="w-full bg-blue-600 text-white p-3 rounded-xl">
-                Yuborish
+            <!-- Button -->
+            <button type="submit"
+                class="w-full bg-blue-600 hover:bg-blue-700 text-white font-medium py-3 rounded-lg transition duration-200">
+                Submit Application
             </button>
+
         </form>
 
     </div>
 
 </div>
+
 {% endblock %}
